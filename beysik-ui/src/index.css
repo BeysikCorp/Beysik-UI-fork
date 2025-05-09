@@ -24,10 +24,11 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+  /* display: flex; */ /* Remove or comment out */
+  /* place-items: center; */ /* Remove or comment out */
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--mui-palette-background-default, #ffffff); /* Ensure body background matches theme */
 }
 
 h1 {
