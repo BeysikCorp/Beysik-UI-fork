@@ -1,16 +1,25 @@
 import React from 'react';
-import { ThemeProvider } from '@mui/material/styles';
-import LandingPage from './pages/LandingPage'; // Adjust path as needed
-import theme from './theme'; // Import your shared theme
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider, CssBaseline } from '@mui/material';
+import LandingPage from './pages/LandingPage';
+import NewArrivals from './pages/NewArrivals';
+import Navbar from './components/Navbar';
+import theme from './theme';
 import './App.css';
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      {/* Your Router or other global components would go here */}
-      <LandingPage />
-      {/* You might have other routes/pages here */}
-    </ThemeProvider>
+    <Router>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Navbar />
+        
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/new-arrivals" element={<NewArrivals />} />
+        </Routes>
+      </ThemeProvider>
+    </Router>
   );
 }
 
