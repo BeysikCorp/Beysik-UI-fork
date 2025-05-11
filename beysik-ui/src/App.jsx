@@ -1,24 +1,25 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ThemeProvider, CssBaseline } from '@mui/material';
 import LandingPage from './pages/LandingPage';
 import NewArrivals from './pages/NewArrivals';
+import Basics from './pages/Basics';
+import Collections from './pages/Collections';
+import About from './pages/About'; 
 import Navbar from './components/Navbar';
-import theme from './theme';
-import './App.css';
+import './styles/global.css';
 
 function App() {
   return (
     <Router>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Navbar />
-        
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/new-arrivals" element={<NewArrivals />} />
-        </Routes>
-      </ThemeProvider>
+      <Navbar />
+      
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/new-arrivals" element={<NewArrivals />} />
+        <Route path="/basics" element={<Basics />} />
+        <Route path="/collections" element={<Collections />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
     </Router>
   );
 }

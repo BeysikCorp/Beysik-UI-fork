@@ -1,115 +1,50 @@
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import { Box, Container, Button, IconButton } from '@mui/material';
-import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import HLogo from '../assets/Logo/hLogo.png'; // Adjusted path relative to Navbar.jsx
-
-// Reusable navigation link component
-const NavLink = ({ children, to }) => (
-  <Button 
-    component={RouterLink}
-    to={to}
-    sx={{
-      fontSize: '0.9rem',
-      color: 'text.primary',
-      px: 1.5,
-      py: 0.75,
-      '&:hover': {
-        transform: 'scale(1.1)',
-        backgroundColor: 'transparent',
-      },
-      '&:focus, &:active': {
-        textDecoration: 'underline',
-        textUnderlineOffset: '4px',
-        outline: 'none',
-      },
-      transition: 'transform 0.2s ease-in-out',
-    }}
-  >
-    {children}
-  </Button>
-);
-
-// Reusable header icon component
-const HeaderIcon = ({ children }) => (
-  <IconButton
-    sx={{
-      color: 'text.primary',
-      p: 1,
-    }}
-  >
-    {children}
-  </IconButton>
-);
+import { Link } from 'react-router-dom';
+import IconButton from '@mui/material/IconButton';
+import SearchIcon from '@mui/icons-material/Search';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import '../styles/navbar.css';
+import Badge from '@mui/material/Badge';
+import hLogo from '../assets/Logo/hLogo.png'; // Import the image
 
 function Navbar() {
   return (
-    <Box 
-      component="header"
-      sx={{
-        bgcolor: 'rgba(255, 255, 255, 0.5)',
-        backdropFilter: 'blur(15px)',
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 1000,
-        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-      }}
-    >
-      <Container>
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            py: 1.25,
-            minHeight: '60px',
-          }}
-        >
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <HeaderIcon>
-              <SearchOutlinedIcon />
-            </HeaderIcon>
-          </Box>
+    <header className="navbar">
+      <div className="container navbar-container">
+        <div className="navbar-actions">
+          <IconButton aria-label="search" className="icon-button">
+            <SearchIcon />
+          </IconButton>
+        </div>
+       
+        <nav className="navbar-links">
+          <Link to="/new-arrivals" className="nav-link">New Arrivals</Link>
+          <Link to="/basics" className="nav-link">Basics</Link>
+        </nav>
 
-          <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center', gap: 3 }}>
-            <NavLink to="/new-arrivals">New Arrivals</NavLink>
-            <NavLink to="/basics">Basics</NavLink>
-          </Box>
+         <div className="navbar-brand">
+          <Link to="/" className="navbar-logo"><img src={hLogo} alt="Beysik" /></Link> {/* Use the imported image */}
+        </div>
 
-          <Box 
-            component={RouterLink}
-            to="/"
-            sx={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              justifyContent: 'center',
-              textDecoration: 'none'
-            }}
-          >
-            <Box 
-              component="img"
-              src={HLogo}
-              alt="Beysik Logo"
-              sx={{ height: '30px', width: 'auto' }}
-            />
-          </Box>
-
-          <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center', gap: 3 }}>
-            <NavLink to="/shop">Shop</NavLink>
-            <NavLink to="/about">About us</NavLink>
-          </Box>
-
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <HeaderIcon>
-              <ShoppingBagOutlinedIcon />
-            </HeaderIcon>
-          </Box>
-        </Box>
-      </Container>
-    </Box>
+        <nav className="navbar-links">
+          <Link to="/collections" className="nav-link">Collections</Link>
+          <Link to="/about" className="nav-link">About</Link>
+        </nav>
+        
+        <div className="navbar-actions">
+          <IconButton aria-label="account" className="icon-button">
+            <AccountCircleOutlinedIcon />
+          </IconButton>
+          <IconButton aria-label="cart" className="icon-button">      
+            <Badge badgeContent={0} color="primary">
+              <ShoppingCartOutlinedIcon />
+            </Badge>
+ 
+          </IconButton>
+        </div>
+      </div>
+    </header>
   );
 }
 

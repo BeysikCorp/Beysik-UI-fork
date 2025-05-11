@@ -71,6 +71,7 @@ const theme = createTheme({
       styleOverrides: {
         html: {
           scrollBehavior: 'smooth',
+          overflowY: 'scroll', // Add this line
         },
         body: {
           backgroundColor: COLORS.background,

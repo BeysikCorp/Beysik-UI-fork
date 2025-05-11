@@ -2,24 +2,22 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/product-pages.css';
 
-const PRODUCTS = [
-  { id: 1, name: 'Organic Cotton Tee', price: '$45.00', image: 'https://placehold.co/400x500/F0F0F0/333?text=Organic+Tee&font=Inter' },
-  { id: 2, name: 'Relaxed Fit Hoodie', price: '$90.00', image: 'https://placehold.co/400x500/EAEAEA/333?text=Relaxed+Hoodie&font=Inter' },
-  { id: 3, name: 'Linen Blend Shirt', price: '$75.00', image: 'https://placehold.co/400x500/F5F5F5/333?text=Linen+Shirt&font=Inter' },
-  { id: 4, name: 'Everyday Canvas Tote', price: '$50.00', image: 'https://placehold.co/400x500/E0E0E0/333?text=Canvas+Tote&font=Inter' },
-  { id: 5, name: 'Slim Tapered Chinos', price: '$85.00', image: 'https://placehold.co/400x500/DBDBDB/333?text=Slim+Chinos&font=Inter' },
-  { id: 6, name: 'Merino Wool Scarf', price: '$60.00', image: 'https://placehold.co/400x500/D1D1D1/333?text=Wool+Scarf&font=Inter' },
+const BASICS = [
+  { id: 1, name: 'Classic White Tee', price: '$40.00', image: 'https://placehold.co/400x500/FFFFFF/333?text=White+Tee&font=Inter' },
+  { id: 2, name: 'Black Crewneck', price: '$50.00', image: 'https://placehold.co/400x500/111111/EEE?text=Black+Crewneck&font=Inter' },
+  { id: 3, name: 'Neutral Tank Top', price: '$35.00', image: 'https://placehold.co/400x500/F5F5F5/333?text=Tank+Top&font=Inter' },
+  { id: 4, name: 'Basic Cotton Shorts', price: '$45.00', image: 'https://placehold.co/400x500/EEEEEE/333?text=Cotton+Shorts&font=Inter' },
 ];
 
-const NewArrivals = () => {
+const Collections = () => {
   return (
     <div className="product-page">
       <div className="container">
         <div className="page-header">
-          <h2 className="page-title">New Arrivals</h2>
+          <h2 className="page-title">Collections</h2>
           <div className="breadcrumb">
             <Link to="/" className="breadcrumb-link">Home</Link> &gt; 
-            <span className="breadcrumb-current">New Arrivals</span>
+            <span className="breadcrumb-current">Collections</span>
           </div>
         </div>
 
@@ -30,7 +28,6 @@ const NewArrivals = () => {
               <option value="All">All</option>
               <option value="Tops">Tops</option>
               <option value="Bottoms">Bottoms</option>
-              <option value="Accessories">Accessories</option>
             </select>
           </div>
           <div className="sort-container">
@@ -44,7 +41,7 @@ const NewArrivals = () => {
         </div>
 
         <div className="product-grid">
-          {PRODUCTS.map((product) => (
+          {BASICS.map((product) => (
             <div className="product-card" key={product.id}>
               <div className="product-image-container">
                 <img
@@ -65,4 +62,4 @@ const NewArrivals = () => {
   );
 };
 
-export default NewArrivals;
+export default Collections;
