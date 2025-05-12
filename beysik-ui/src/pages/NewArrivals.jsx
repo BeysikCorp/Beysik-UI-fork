@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'; // Added useState, useEffect
 import { Link } from 'react-router-dom';
 import '../styles/product-pages.css';
-
-const PRODUCTS = [
-  { id: 1, name: 'Organic Cotton Tee', price: '$45.00', image: 'https://placehold.co/400x500/F0F0F0/333?text=Organic+Tee&font=Inter' },
-  { id: 2, name: 'Relaxed Fit Hoodie', price: '$90.00', image: 'https://placehold.co/400x500/EAEAEA/333?text=Relaxed+Hoodie&font=Inter' },
-  { id: 3, name: 'Linen Blend Shirt', price: '$75.00', image: 'https://placehold.co/400x500/F5F5F5/333?text=Linen+Shirt&font=Inter' },
-  { id: 4, name: 'Everyday Canvas Tote', price: '$50.00', image: 'https://placehold.co/400x500/E0E0E0/333?text=Canvas+Tote&font=Inter' },
-  { id: 5, name: 'Slim Tapered Chinos', price: '$85.00', image: 'https://placehold.co/400x500/DBDBDB/333?text=Slim+Chinos&font=Inter' },
-  { id: 6, name: 'Merino Wool Scarf', price: '$60.00', image: 'https://placehold.co/400x500/D1D1D1/333?text=Wool+Scarf&font=Inter' },
-];
+import allProducts from '../data/products.json'; // Import the JSON data
 
 const NewArrivals = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    // Filter products tagged as 'new-arrival'
+    const newArrivalItems = allProducts.filter(p => p.tags && p.tags.includes('new-arrival'));
+    setProducts(newArrivalItems);
+  }, []);
+
   return (
     <div className="product-page">
       <div className="container">
@@ -44,19 +44,22 @@ const NewArrivals = () => {
         </div>
 
         <div className="product-grid">
-          {PRODUCTS.map((product) => (
+          {products.map((product) => ( // Use the state variable 'products'
             <div className="product-card" key={product.id}>
-              <div className="product-image-container">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="product-image"
-                />
-              </div>
-              <div className="product-content">
-                <h3 className="product-name">{product.name}</h3>
-                <p className="product-price">{product.price}</p>
-              </div>
+              <Link to={`/product/${product.id}`}>
+                <div className="product-image-container">
+                  <img
+                    src={product.listingImage} // Use listingImage from JSON
+                    alt={product.name}
+                    className="product-image"
+                  />
+                </div>
+                <div className="product-content">
+                  <h3 className="product-name">{product.name}</h3>
+                  {/* Format price as currency */}
+                  <p className="product-price">${product.price.toFixed(2)}</p>
+                </div>
+              </Link>
             </div>
           ))}
         </div>

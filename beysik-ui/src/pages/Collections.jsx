@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/product-pages.css';
-
-const BASICS = [
-  { id: 1, name: 'Classic White Tee', price: '$40.00', image: 'https://placehold.co/400x500/FFFFFF/333?text=White+Tee&font=Inter' },
-  { id: 2, name: 'Black Crewneck', price: '$50.00', image: 'https://placehold.co/400x500/111111/EEE?text=Black+Crewneck&font=Inter' },
-  { id: 3, name: 'Neutral Tank Top', price: '$35.00', image: 'https://placehold.co/400x500/F5F5F5/333?text=Tank+Top&font=Inter' },
-  { id: 4, name: 'Basic Cotton Shorts', price: '$45.00', image: 'https://placehold.co/400x500/EEEEEE/333?text=Cotton+Shorts&font=Inter' },
-];
+import allProducts from '../data/products.json';
 
 const Collections = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    // Filter products tagged as 'collections'
+    const collectionItems = allProducts.filter(p => p.tags && p.tags.includes('collections'));
+    setProducts(collectionItems);
+  }, []);
+
   return (
     <div className="product-page">
       <div className="container">
@@ -41,18 +43,18 @@ const Collections = () => {
         </div>
 
         <div className="product-grid">
-          {BASICS.map((product) => (
+          {products.map((product) => (
             <div className="product-card" key={product.id}>
               <div className="product-image-container">
                 <img
-                  src={product.image}
+                  src={product.listingImage}
                   alt={product.name}
                   className="product-image"
                 />
               </div>
               <div className="product-content">
                 <h3 className="product-name">{product.name}</h3>
-                <p className="product-price">{product.price}</p>
+                <p className="product-price">${product.price.toFixed(2)}</p>
               </div>
             </div>
           ))}
