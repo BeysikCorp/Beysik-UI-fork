@@ -45,6 +45,7 @@ const Collections = () => {
         <div className="product-grid">
           {products.map((product) => (
             <div className="product-card" key={product.id}>
+              <Link to={`/product/${product.id}`}>
               <div className="product-image-container">
                 <img
                   src={product.listingImage}
@@ -56,6 +57,7 @@ const Collections = () => {
                 <h3 className="product-name">{product.name}</h3>
                 <p className="product-price">${product.price.toFixed(2)}</p>
               </div>
+              </Link>
             </div>
           ))}
         </div>

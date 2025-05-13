@@ -6,7 +6,7 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import '../styles/navbar.css';
 import Badge from '@mui/material/Badge';
-import hLogo from '../assets/Logo/hLogo.png'; // Import the image
+import hLogo from '../assets/Logo/hLogo.png';
 
 function Navbar() {
   return (
@@ -24,7 +24,7 @@ function Navbar() {
         </nav>
 
          <div className="navbar-brand">
-          <Link to="/" className="navbar-logo"><img src={hLogo} alt="Beysik" /></Link> {/* Use the imported image */}
+          <Link to="/" className="navbar-logo"><img src={hLogo} alt="Beysik" /></Link> 
         </div>
 
         <nav className="navbar-links">
@@ -36,12 +36,13 @@ function Navbar() {
           <IconButton aria-label="account" className="icon-button">
             <AccountCircleOutlinedIcon />
           </IconButton>
+          <Link to="/cart" className="nav-link">
           <IconButton aria-label="cart" className="icon-button">      
             <Badge badgeContent={0} color="primary">
               <ShoppingCartOutlinedIcon />
             </Badge>
- 
           </IconButton>
+          </Link>
         </div>
       </div>
     </header>

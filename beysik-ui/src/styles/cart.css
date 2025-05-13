@@ -1,0 +1,59 @@
+.view-toggle {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.view-toggle .btn-outline {
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.view-toggle .btn-outline.active {
+  background-color: #222;
+  color: #fff;
+}
+
+.product-grid.list-view {
+  display: block;
+}
+
+.product-grid.list-view .product-card {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.product-grid.list-view .product-image-container {
+  flex: 0 0 150px;
+}
+
+.product-grid.list-view .product-content {
+  flex: 1;
+}
+
+.cart-summary {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.cart-summary h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.cart-summary .btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #222;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cart-summary .btn:hover {
+  background-color: #444;
+}

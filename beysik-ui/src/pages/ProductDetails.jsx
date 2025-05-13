@@ -5,6 +5,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import '../styles/product-details.css';
 import productsData from '../data/products.json'; // Import the JSON data
+import { addToCart } from '../data/cartUtils';
 
 const ProductDetailsPage = () => {
   // Normally would use useParams() to get productId from URL
@@ -40,16 +41,19 @@ const ProductDetailsPage = () => {
       alert('Please select a color.');
       return;
     }
-    
-    console.log('Added to cart:', {
-      productId: product.id,
+
+    const cartItem = {
+      id: product.id,
       name: product.name,
+      price: product.price,
+      quantity,
       size: selectedSize,
       color: selectedColor,
-      quantity,
-      price: product.price,
-    });
-    // Add actual cart logic here
+      image: product.listingImage,
+    };
+
+    addToCart(cartItem);
+    alert('Item added to cart!');
   };
 
   const handleWishlistToggle = () => {
